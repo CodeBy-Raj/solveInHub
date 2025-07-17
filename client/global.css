@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom premium black theme */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #0f0f0f;
+}
+
+body {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #f3f4f6;
+}
+
+@layer base {
+  /* Premium black theme variables */
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 249 100% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 283 100% 70%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 249 100% 65%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 249 100% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 283 100% 70%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 249 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Premium gradients and effects */
+  .premium-gradient {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #67bb9d 100%);
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(16px);
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .premium-shadow {
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Custom scrollbar for premium feel */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 15, 15, 0.8);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.6);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.8);
+  }
+}
+
+/* DaisyUI theme overrides for premium look */
+.btn {
+  @apply border-0 text-sm font-medium transition-all duration-300;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  @apply shadow-lg hover:shadow-xl;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  transform: translateY(-1px);
+}
+
+.card {
+  @apply bg-card border border-border/20 backdrop-blur-sm;
+}
+
+.input {
+  @apply bg-muted/50 border-border/20 text-foreground placeholder-muted-foreground;
+}
+
+.input:focus {
+  @apply border-primary/50 ring-2 ring-primary/20;
+}
