@@ -103,32 +103,44 @@ export default function LandingPage() {
               </span>
             </div>
 
-            <nav className="hidden md:flex items-center space-x-6">
+            <nav className="hidden lg:flex items-center space-x-6">
               <Link
                 to="/dashboard"
-                className="text-muted-foreground hover:text-foreground transition-colors   "
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm lg:text-base"
               >
                 Browse Challenges
               </Link>
               <Link
                 to="/submit-challenge"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm lg:text-base"
               >
                 Submit Challenge
               </Link>
               <Link
                 to="/about"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm lg:text-base"
               >
                 About
               </Link>
             </nav>
 
-            <div className="flex items-center space-x-2">
-              <Button variant="ghost" asChild>
+            <div className="hidden md:flex items-center space-x-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="hidden lg:flex"
+                asChild
+              >
                 <Link to="/signin">Sign In</Link>
               </Button>
-              <Button asChild>
+              <Button size="sm" asChild>
+                <Link to="/dashboard">Get Started</Link>
+              </Button>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="flex lg:hidden">
+              <Button variant="ghost" size="sm" asChild>
                 <Link to="/dashboard">Get Started</Link>
               </Button>
             </div>
@@ -137,8 +149,8 @@ export default function LandingPage() {
       </motion.header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        <div className="container mx-auto px-4">
+      <section className="relative overflow-hidden py-12 sm:py-20 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
@@ -146,7 +158,7 @@ export default function LandingPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="mb-6"
             >
-              <Badge className="mb-4 px-3 py-1 text-sm">
+              <Badge className="mb-4 px-3 py-1 text-xs sm:text-sm">
                 <Zap className="h-3 w-3 mr-1" />
                 Powered by Global Innovation
               </Badge>
@@ -155,10 +167,10 @@ export default function LandingPage() {
             <motion.h1
               {...fadeInUp}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-4 sm:mb-6 leading-tight"
             >
               Transform{" "}
-              <span className="bg-gradient-to-r  from-primary to-green-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-green-500 bg-clip-text text-transparent">
                 Problems
               </span>{" "}
               into Solutions
@@ -167,7 +179,7 @@ export default function LandingPage() {
             <motion.p
               {...fadeInUp}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
+              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-4 sm:px-0"
             >
               Join the world's largest collaborative problem-solving platform.
               Connect with challenges that matter and create solutions that
@@ -177,24 +189,42 @@ export default function LandingPage() {
             <motion.div
               {...fadeInUp}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
             >
-              <motion.div whileHover={scaleOnHover}>
-                <Button size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/dashboard" className="flex items-center">
+              <motion.div
+                whileHover={scaleOnHover}
+                className="w-full sm:w-auto"
+              >
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-6"
+                  asChild
+                >
+                  <Link
+                    to="/dashboard"
+                    className="flex items-center justify-center"
+                  >
                     Browse Challenges
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={scaleOnHover}>
+              <motion.div
+                whileHover={scaleOnHover}
+                className="w-full sm:w-auto"
+              >
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 py-6"
+                  className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-6"
                   asChild
                 >
-                  <Link to="/submit-challenge">Submit a Challenge</Link>
+                  <Link
+                    to="/submit-challenge"
+                    className="flex items-center justify-center"
+                  >
+                    Submit a Challenge
+                  </Link>
                 </Button>
               </motion.div>
             </motion.div>
@@ -229,14 +259,14 @@ export default function LandingPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-card/50">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 bg-card/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -244,17 +274,19 @@ export default function LandingPage() {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="text-center"
+                  className="text-center p-4 sm:p-6"
                 >
                   <div className="flex justify-center mb-3">
-                    <div className="p-3 bg-primary/10 rounded-full">
-                      <Icon className="h-6 w-6 text-primary" />
+                    <div className="p-2 sm:p-3 bg-primary/10 rounded-full">
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-foreground mb-1">
+                  <div className="text-2xl sm:text-3xl font-bold text-foreground mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-muted-foreground">{stat.label}</div>
+                  <div className="text-sm sm:text-base text-muted-foreground">
+                    {stat.label}
+                  </div>
                 </motion.div>
               );
             })}
@@ -263,17 +295,17 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4">
               Why Choose SolveHub?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
               Discover the platform that's revolutionizing how we tackle global
               challenges
             </p>
@@ -284,7 +316,7 @@ export default function LandingPage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6"
           >
             {features.map((feature, index) => {
               const Icon = feature.icon;
