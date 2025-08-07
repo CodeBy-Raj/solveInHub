@@ -518,35 +518,48 @@ export default function SubmitChallenge() {
             >
               {!isFormValid && (
                 <Alert>
-                  <AlertCircle className="h-4 w-4" />
-                  <AlertDescription>
-                    Please fill in all required fields marked with *
-                  </AlertDescription>
+                  <div className="flex items-start">
+                    <div className="flex items-center">
+                      <AlertCircle className="h-4 w-4 " />
+                    </div>
+                    <div className="ml-2  ">
+                      <span className="text-sm text-red-500">Please fill in all required fields marked with *</span>
+                    </div>
+                  </div>
                 </Alert>
               )}
 
-              <div className="flex justify-end space-x-4">
-                <Button type="button" variant="outline" asChild>
-                  <Link to="/dashboard">Cancel</Link>
-                </Button>
-                <Button
-                  type="submit"
-                  disabled={!isFormValid || isSubmitting}
-                  className="min-w-32"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center">
-                      <div className="loading loading-spinner loading-sm mr-2"></div>
-                      Submitting...
-                    </div>
-                  ) : (
-                    "Submit Challenge"
-                  )}
-                </Button>
+              <div className="flex justify-between mt-2">
+                <div>
+                  <Button type="button" variant="outline" asChild>
+                    <Link to="/dashboard">Cancel</Link>
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    type="submit"
+                    disabled={!isFormValid || isSubmitting}
+                    className="min-w-32"
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center">
+                        <div className="loading loading-spinner loading-sm mr-2"></div>
+                        Submitting...
+                      </div>
+                    ) : (
+                      "Submit Challenge"
+                    )}
+                  </Button>
+                </div>
               </div>
             </motion.div>
           </form>
+
         </div>
+      
+        {/* Space for footer */}
+        <div className="h-20 "></div>
+        {/* end of space */}
       </div>
     </Layout>
   );

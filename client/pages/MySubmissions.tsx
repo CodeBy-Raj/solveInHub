@@ -529,6 +529,9 @@ export default function MySubmissions() {
           </motion.div>
         )}
       </div>
+         {/* Space for footer */}
+        <div className="h-20 "></div>
+        {/* end of space */}
     </Layout>
   );
 }

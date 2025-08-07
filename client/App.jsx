@@ -16,6 +16,7 @@ import MySubmissions from "./pages/MySubmissions";
 import AdminPanel from "./pages/AdminPanel";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
+import forgotPassword from "./pages/forgotPassword";
 import { AppProvider } from "./contexts/AppContext";
 import { Plus, FileText, Settings } from "lucide-react";
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/submit-challenge" element={<SubmitChallenge />} />
             <Route path="/my-submissions" element={<MySubmissions />} />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/forgotPassword" element ={<Placeholder/>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import forgotPassword from "./forgotPassword";
 import {
   Eye,
   EyeOff,
@@ -46,9 +47,9 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-base-100 via-base-200 to-base-300 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-base-100 via-base-200 to-base-300 flex items-center justify-center p-2 sm:p-4 relative">
       {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <motion.div
           animate={{
             x: [0, 100, 0],
@@ -60,7 +61,7 @@ export default function SignIn() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-primary/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -73,7 +74,7 @@ export default function SignIn() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-96 sm:h-96 bg-secondary/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -81,11 +82,11 @@ export default function SignIn() {
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="relative w-full max-w-md"
+        className="relative w-full max-w-xs sm:max-w-md flex flex-col items-center justify-center"
       >
         {/* Header */}
-        <motion.div variants={fadeInUp} className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center justify-center mb-6">
+        <motion.div variants={fadeInUp} className="text-center mb-6 sm:mb-8 w-full flex flex-col items-center">
+          <Link to="/" className="inline-flex items-center justify-center mb-4 sm:mb-6">
             <motion.div
               whileHover={{ rotate: 360, scale: 1.1 }}
               transition={{ duration: 0.5 }}
@@ -94,10 +95,10 @@ export default function SignIn() {
               <Target className="w-6 h-6 text-white" />
             </motion.div>
           </Link>
-          <h1 className="text-3xl font-bold text-base-content mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-base-content mb-1 sm:mb-2">
             Welcome Back
           </h1>
-          <p className="text-base-content/70">
+          <p className="text-base-content/70 text-sm sm:text-base">
             Sign in to continue your problem-solving journey
           </p>
         </motion.div>
@@ -105,23 +106,23 @@ export default function SignIn() {
         {/* Sign In Card */}
         <motion.div
           variants={fadeInUp}
-          className="card bg-base-100/80 glass-effect shadow-2xl border border-white/10"
+          className="card glass-effect shadow-2xl border border-white/10 w-full"
         >
-          <div className="card-body p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="card-body flex flex-col items-center w-full p-4 sm:p-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 w-full">
               {/* Email Field */}
-              <div className="form-control ">
-                <label className="label mb-3">
+              <div className="form-control flex flex-col mb-3 sm:mb-4 w-full">
+                <label className="label mb-1">
                   <span className="label-text text-base-content/80 font-medium">
                     Email Address
                   </span>
                 </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-base-content/50" />
+                <div className="flex items-center w-full">
+                  <Mail className="w-5" />
                   <input
                     type="email"
                     placeholder="you@example.com"
-                    className="input input-bordered w-full pl-10 bg-base-200/50 border-base-300/30 focus:border-primary/50 focus:bg-base-100/80 transition-all duration-300"
+                    className="input h-9 mx-auto rounded-md p-2 w-full"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -130,39 +131,41 @@ export default function SignIn() {
               </div>
 
               {/* Password Field */}
-              <div className="form-control">
-                <label className="label mb-3">
+              <div className="form-control flex flex-col mb-3 sm:mb-4 w-full">
+                <label className="label mb-1">
                   <span className="label-text text-base-content/80 font-medium">
                     Password
                   </span>
                 </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-base-content/50" />
+                <div className="flex items-center w-full">
+                  <Lock className="w-4" />
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
-                    className="input input-bordered w-full pl-10 pr-10 bg-base-200/50 border-base-300/30 focus:border-primary/50 focus:bg-base-100/80 transition-all duration-300"
+                    className="input h-9 mx-auto rounded-md p-2 w-full"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-base-content/50 hover:text-base-content transition-colors"
-                  >
-                    {showPassword ? (
-                      <EyeOff className="w-5 h-5" />
-                    ) : (
-                      <Eye className="w-5 h-5" />
-                    )}
-                  </button>
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="ml-2"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-4" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
 
               {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
-                <label className="label cursor-pointer ">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 sm:mb-4 w-full gap-y-2 sm:gap-y-0 sm:gap-x-6">
+                <label className="label cursor-pointer flex items-center">
                   <input
                     type="checkbox"
                     className="checkbox checkbox-primary checkbox-sm mr-2 bg-slate-50"
@@ -171,42 +174,44 @@ export default function SignIn() {
                     Remember me
                   </span>
                 </label>
-                <Link
-                  to="/forgot-password"
-                  className="link link-primary text-sm hover:link-hover"
-                >
-                  Forgot password?
-                </Link>
+                <div className="w-full sm:w-auto text-right sm:text-left">
+                  <Link
+                    to="/forgotPassword"
+                    className="link link-primary text-sm hover:link-hover"
+                  >
+                    Forgot password?
+                  </Link>
+                </div>
               </div>
 
               {/* Sign In Button */}
-                <motion.button
+              <motion.button
                 type="submit"
                 disabled={isLoading}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn btn-primary w-full premium-gradient shadow-lg hover:shadow-xl border-0 group rounded-xl "
-                >
+              >
                 {isLoading ? (
                   <span className="loading loading-spinner loading-md"></span>
                 ) : (
                   <>
-                  Sign In
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    Sign In
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
-                </motion.button>
+              </motion.button>
             </form>
 
             {/* Divider */}
             <div className="divider text-base-content/50">or continue with</div>
 
             {/* Social Login */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 w-full">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="btn btn-outline border-base-300/30 hover:border-primary/50 hover:bg-primary/10"
+                className="btn btn-outline border-base-300/30 hover:border-primary/50 hover:bg-primary/10 w-full"
               >
                 <Github className="w-5 h-5" />
                 GitHub
@@ -214,7 +219,7 @@ export default function SignIn() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="btn btn-outline border-base-300/30 hover:border-secondary/50 hover:bg-secondary/10"
+                className="btn btn-outline border-base-300/30 hover:border-secondary/50 hover:bg-secondary/10 w-full"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path
@@ -241,7 +246,7 @@ export default function SignIn() {
         </motion.div>
 
         {/* Footer */}
-        <motion.div variants={fadeInUp} className="text-center mt-6">
+        <motion.div variants={fadeInUp} className="text-center mt-6 w-full">
           <p className="text-base-content/70">
             Don't have an account?{" "}
             <Link
@@ -256,7 +261,7 @@ export default function SignIn() {
         {/* Features */}
         <motion.div
           variants={fadeInUp}
-          className="grid grid-cols-3 gap-4 mt-8 text-center"
+          className="grid grid-cols-3 gap-4 mt-8 text-center w-full"
         >
           <div className="flex flex-col items-center">
             <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mb-2">

@@ -342,6 +342,9 @@ export default function Dashboard() {
             </p>
           </motion.div>
         )}
+           {/* Space for footer */}
+        <div className="h-20 "></div>
+        {/* end of space */}
       </div>
     </Layout>
   );

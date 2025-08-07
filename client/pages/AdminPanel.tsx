@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
+import Layout from "../components/Layout";
+import {Button }from "../components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
+} from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
+import { Input } from "../components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../components/ui/select";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -29,7 +29,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "../components/ui/alert-dialog";
 import { motion } from "framer-motion";
 import {
   Shield,
@@ -306,7 +306,7 @@ export default function AdminPanel() {
               <Filter className="h-4 w-4 mr-2" />
               <SelectValue placeholder="Filter by status" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-60">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="pending">Pending</SelectItem>
               <SelectItem value="approved">Approved</SelectItem>
@@ -318,11 +318,11 @@ export default function AdminPanel() {
         {/* Main Content Tabs */}
         <motion.div {...fadeInUp} transition={{ delay: 0.3 }}>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="border-b border-gray-200 mb-4">
-              <TabsTrigger value="pending-challenges">Challenges</TabsTrigger>
-              <TabsTrigger value="pending-solutions">Solutions</TabsTrigger>
-              <TabsTrigger value="flagged-content">Flagged</TabsTrigger>
-              <TabsTrigger value="user-management">Users</TabsTrigger>
+            <TabsList className="border-b border-gray-200 mb-4 items-center flex">
+              <TabsTrigger className="border rounded-md hover:bg-gray-100" value="pending-challenges">Challenges</TabsTrigger>
+              <TabsTrigger className="border rounded-md hover:bg-gray-100 " value="pending-solutions">Solutions</TabsTrigger>
+              <TabsTrigger className="border rounded-md hover:bg-gray-100" value="flagged-content">Flagged</TabsTrigger>
+              <TabsTrigger className="border rounded-md hover:bg-gray-100" value="user-management">Users</TabsTrigger>
             </TabsList>
 
             {/* Pending Challenges */}
@@ -706,6 +706,9 @@ export default function AdminPanel() {
             </TabsContent>
           </Tabs>
         </motion.div>
+           {/* Space for footer */}
+        <div className="h-20 "></div>
+        {/* end of space */}
       </div>
     </Layout>
   );

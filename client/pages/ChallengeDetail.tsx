@@ -1,19 +1,19 @@
 import { useParams, Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Progress } from "@/components/ui/progress";
-import { Separator } from "@/components/ui/separator";
-import Layout from "@/components/Layout";
-import ProposeSolutionModal from "@/components/ProposeSolutionModal";
-import { useApp } from "@/contexts/AppContext";
+} from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
+import { Avatar, AvatarImage, AvatarFallback } from "../components/ui/avatar";
+import { Progress } from "../components/ui/progress";
+import { Separator } from "../components/ui/separator";
+import Layout from "../components/Layout";
+import ProposeSolutionModal from "../components/ProposeSolutionModal";
+import { useApp } from "../contexts/AppContext";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -145,7 +145,7 @@ export default function ChallengeDetail() {
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container px-4 py-8 flex flex-col gap-8">
         {/* Back Navigation */}
         <div className="mb-6">
           <Button variant="ghost" asChild className="mb-4">
@@ -251,7 +251,7 @@ export default function ChallengeDetail() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className=" grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Challenge Description */}
@@ -398,7 +398,7 @@ export default function ChallengeDetail() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-6  flex items-center  justify-between mt-8 mb-8">
             {/* Action Card */}
             <motion.div {...fadeInUp} transition={{ delay: 0.3 }}>
               <Card>
@@ -408,7 +408,7 @@ export default function ChallengeDetail() {
                     Join the challenge and contribute your solution
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className=" items-center flex flex-col gap-3">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -417,7 +417,7 @@ export default function ChallengeDetail() {
                       challengeId={mockChallenge.id}
                       challengeTitle={mockChallenge.title}
                     >
-                      <Button className="w-full" size="lg">
+                      <Button className="" size="lg">
                         <Lightbulb className="h-4 w-4 mr-2" />
                         Propose Solution
                       </Button>
@@ -431,7 +431,7 @@ export default function ChallengeDetail() {
                       variant={
                         isFollowing(mockChallenge.id) ? "default" : "outline"
                       }
-                      className="w-full"
+                      className="min-w-16 flex items-center justify-center"
                       onClick={() => toggleFollow(mockChallenge.id)}
                     >
                       {isFollowing(mockChallenge.id) ? (
@@ -500,23 +500,34 @@ export default function ChallengeDetail() {
                       )}
                     </span>
                   </div>
-                  <Separator />
+                  
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">
                       Days Remaining
                     </span>
                     <span className="font-semibold text-lg text-orange-600">
-                      {Math.ceil(
+                      {Math.abs(Math.ceil(
                         (new Date(mockChallenge.deadline).getTime() -
                           new Date().getTime()) /
                           (1000 * 60 * 60 * 24),
-                      )}
+                      ))}
                     </span>
                   </div>
+                  
                 </CardContent>
               </Card>
             </motion.div>
           </div>
+        </div>
+            <Separator /> 
+        <div className="text-center text-sm text-muted-foreground mt-8">
+          <p>
+            Challenge details are for demonstration purposes only. All data is
+            fictional.
+          </p>
+          <Link to="/" className="text-blue-600 hover:underline">
+            Back to Challenges
+          </Link>
         </div>
       </div>
     </Layout>
