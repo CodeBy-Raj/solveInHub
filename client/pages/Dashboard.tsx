@@ -194,19 +194,19 @@ export default function Dashboard() {
           transition={{ delay: 0.2 }}
           className="mb-8 space-y-4"
         >
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <div className="relative mb-4">
+            {/* <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" /> */}
             <Input
               placeholder="Search challenges..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
             />
-          </div>
+            </div>
 
           <div className="flex flex-wrap gap-4">
             <Select value={selectedSector} onValueChange={setSelectedSector}>
-              <SelectTrigger className="w-48">
+              <SelectTrigger className="w-58 ">
                 <SelectValue placeholder="Select sector" />
               </SelectTrigger>
               <SelectContent>

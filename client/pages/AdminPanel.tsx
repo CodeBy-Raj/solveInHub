@@ -293,7 +293,7 @@ export default function AdminPanel() {
           className="flex gap-4 mb-6"
         >
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            {/* <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" /> */}
             <Input
               placeholder="Search content..."
               value={searchTerm}
@@ -318,7 +318,7 @@ export default function AdminPanel() {
         {/* Main Content Tabs */}
         <motion.div {...fadeInUp} transition={{ delay: 0.3 }}>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="border-b border-gray-200 mb-4">
               <TabsTrigger value="pending-challenges">Challenges</TabsTrigger>
               <TabsTrigger value="pending-solutions">Solutions</TabsTrigger>
               <TabsTrigger value="flagged-content">Flagged</TabsTrigger>
