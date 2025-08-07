@@ -98,11 +98,11 @@ export default function About() {
 
   const team = [
     {
-      name: "Sarah Chen",
+      name: "Harsh Raj",
       role: "Founder & CEO",
       image:
-        "https://images.unsplash.com/photo-1494790108755-2616b25a4c72?w=400&h=400&fit=crop&crop=face",
-      bio: "Former tech executive with 15+ years in innovation management.",
+        "../client/team/img/raj.jpg",
+      bio: "Backend developer with a passion for building scalable solutions.",
     },
     {
       name: "Marcus Rodriguez",

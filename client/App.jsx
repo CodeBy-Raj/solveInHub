@@ -40,6 +40,7 @@ const App = () => (
             <Route path="/my-submissions" element={<MySubmissions />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/forgotPassword" element ={<Placeholder/>} />
+            <Route path="/signup" element={<Placeholder />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

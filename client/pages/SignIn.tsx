@@ -106,9 +106,9 @@ export default function SignIn() {
         {/* Sign In Card */}
         <motion.div
           variants={fadeInUp}
-          className="card glass-effect shadow-2xl border border-white/10 w-full"
+          className="card glass-effect shadow-2xl border flex justify-between border-white/10 "
         >
-          <div className="card-body flex flex-col items-center w-full p-4 sm:p-6">
+          <div className="card-body flex  items-center  justify-center">
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 w-full">
               {/* Email Field */}
               <div className="form-control flex flex-col mb-3 sm:mb-4 w-full">
@@ -118,7 +118,7 @@ export default function SignIn() {
                   </span>
                 </label>
                 <div className="flex items-center w-full">
-                  <Mail className="w-5" />
+                  {/* <Mail className="w-5" /> */}
                   <input
                     type="email"
                     placeholder="you@example.com"
@@ -131,14 +131,14 @@ export default function SignIn() {
               </div>
 
               {/* Password Field */}
-              <div className="form-control flex flex-col mb-3 sm:mb-4 w-full">
+              <div className="form-control flex flex-col mb-3 mt-4 sm:mb-4 w-full">
                 <label className="label mb-1">
                   <span className="label-text text-base-content/80 font-medium">
                     Password
                   </span>
                 </label>
                 <div className="flex items-center w-full">
-                  <Lock className="w-4" />
+                  {/* <Lock className="w-4" /> */}
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
@@ -185,22 +185,24 @@ export default function SignIn() {
               </div>
 
               {/* Sign In Button */}
-              <motion.button
-                type="submit"
-                disabled={isLoading}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="btn btn-primary w-full premium-gradient shadow-lg hover:shadow-xl border-0 group rounded-xl "
-              >
-                {isLoading ? (
-                  <span className="loading loading-spinner loading-md"></span>
-                ) : (
-                  <>
-                    Sign In
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </>
-                )}
-              </motion.button>
+              <div className="flex justify-center w-full">
+                <motion.button
+                  type="submit"
+                  disabled={isLoading}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="btn btn-primary w-22 flex items-center premium-gradient shadow-lg hover:shadow-xl border-0 group rounded-xl  "
+                >
+                  {isLoading ? (
+                    <span className="loading loading-spinner loading-md"></span>
+                  ) : (
+                    <>
+                      Sign In
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </motion.button>
+              </div>
             </form>
 
             {/* Divider */}
@@ -248,12 +250,12 @@ export default function SignIn() {
         {/* Footer */}
         <motion.div variants={fadeInUp} className="text-center mt-6 w-full">
           <p className="text-base-content/70">
-            Don't have an account?{" "}
+            No Account ?{" "}
             <Link
               to="/signup"
-              className="link link-primary font-medium hover:link-hover"
+              className="link ml-2 link-primary font-medium hover:link-hover"
             >
-              Sign up for free
+              Sign up
             </Link>
           </p>
         </motion.div>
@@ -261,7 +263,7 @@ export default function SignIn() {
         {/* Features */}
         <motion.div
           variants={fadeInUp}
-          className="grid grid-cols-3 gap-4 mt-8 text-center w-full"
+          className=" flex items-center justify-between mt-8 text-center gap-4"
         >
           <div className="flex flex-col items-center">
             <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mb-2">
